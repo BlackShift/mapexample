@@ -1,0 +1,64 @@
+[gd_scene load_steps=7 format=3 uid="uid://dg5boibnm15a4"]
+
+[ext_resource type="Script" uid="uid://kdne3r1bgeao" path="res://map.gd" id="1_61tb2"]
+[ext_resource type="Script" uid="uid://bho46d1pjn0c8" path="res://map_view.gd" id="1_l1o8s"]
+[ext_resource type="Script" uid="uid://cg3gbet6tgswe" path="res://MapElement.gd" id="3_51ccw"]
+[ext_resource type="Texture2D" uid="uid://cew101yoyjdch" path="res://icon.svg" id="5_l78cc"]
+
+[sub_resource type="Gradient" id="Gradient_l1o8s"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_l78cc"]
+gradient = SubResource("Gradient_l1o8s")
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 193.0
+offset_bottom = 168.0
+
+[node name="MapView" type="Control" parent="." node_paths=PackedStringArray("map")]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_l1o8s")
+map = NodePath("Map")
+spacing = Vector2(10, 10)
+link_thickness = 1.0
+center_position = Vector2i(1, 1)
+
+[node name="Map" type="Node" parent="MapView"]
+script = ExtResource("1_61tb2")
+
+[node name="MapElement" type="Node" parent="MapView/Map" node_paths=PackedStringArray("links")]
+script = ExtResource("3_51ccw")
+links = [NodePath("../MapElement2")]
+position = Vector2i(2, 1)
+preview_size = Vector2(25, 25)
+preview_texture = SubResource("GradientTexture2D_l78cc")
+metadata/_custom_type_script = "uid://cg3gbet6tgswe"
+
+[node name="MapElement2" type="Node" parent="MapView/Map" node_paths=PackedStringArray("links")]
+script = ExtResource("3_51ccw")
+links = [NodePath("../MapElement3")]
+position = Vector2i(2, 0)
+preview_size = Vector2(25, 25)
+preview_texture = ExtResource("5_l78cc")
+metadata/_custom_type_script = "uid://cg3gbet6tgswe"
+
+[node name="MapElement3" type="Node" parent="MapView/Map"]
+script = ExtResource("3_51ccw")
+preview_size = Vector2(25, 25)
+preview_texture = ExtResource("5_l78cc")
+metadata/_custom_type_script = "uid://cg3gbet6tgswe"
+
+[node name="MapElement4" type="Node" parent="MapView/Map" node_paths=PackedStringArray("links")]
+script = ExtResource("3_51ccw")
+links = [NodePath("../MapElement3")]
+position = Vector2i(1, 1)
+preview_size = Vector2(25, 25)
+preview_texture = ExtResource("5_l78cc")
+metadata/_custom_type_script = "uid://cg3gbet6tgswe"
