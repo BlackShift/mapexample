@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=3 uid="uid://hnyqqv88jeld"]
+
+[ext_resource type="Script" uid="uid://kdne3r1bgeao" path="res://map.gd" id="1_uflyk"]
+[ext_resource type="Script" uid="uid://cg3gbet6tgswe" path="res://MapElement.gd" id="2_g0rns"]
+[ext_resource type="Texture2D" uid="uid://cew101yoyjdch" path="res://icon.svg" id="3_o6c5f"]
+
+[sub_resource type="Gradient" id="Gradient_l1o8s"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_l78cc"]
+gradient = SubResource("Gradient_l1o8s")
+
+[node name="Map" type="Node"]
+script = ExtResource("1_uflyk")
+
+[node name="MapElement" type="Node" parent="." node_paths=PackedStringArray("links")]
+script = ExtResource("2_g0rns")
+links = [NodePath("../MapElement2")]
+position = Vector2i(2, 1)
+preview_size = Vector2(25, 25)
+preview_texture = SubResource("GradientTexture2D_l78cc")
+metadata/_custom_type_script = "uid://cg3gbet6tgswe"
+
+[node name="MapElement2" type="Node" parent="." node_paths=PackedStringArray("links")]
+script = ExtResource("2_g0rns")
+links = [NodePath("../MapElement3")]
+position = Vector2i(2, 0)
+preview_size = Vector2(25, 25)
+preview_texture = ExtResource("3_o6c5f")
+metadata/_custom_type_script = "uid://cg3gbet6tgswe"
+
+[node name="MapElement3" type="Node" parent="."]
+script = ExtResource("2_g0rns")
+preview_size = Vector2(25, 25)
+preview_texture = ExtResource("3_o6c5f")
+metadata/_custom_type_script = "uid://cg3gbet6tgswe"
+
+[node name="MapElement4" type="Node" parent="." node_paths=PackedStringArray("links")]
+script = ExtResource("2_g0rns")
+links = [NodePath("../MapElement3")]
+position = Vector2i(1, 1)
+preview_size = Vector2(25, 25)
+preview_texture = ExtResource("3_o6c5f")
+metadata/_custom_type_script = "uid://cg3gbet6tgswe"
